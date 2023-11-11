@@ -1,0 +1,18 @@
+.Weather h2 {
+  font-size: 80px;
+  margin-left: 30px;
+}
+.Weather ul {
+  padding: 20px 0;
+  list-style: none;
+}
+
+.Weather .unit {
+  position: relative;
+  top: 15px;
+  font-size: 30px;
+}
+
+.Weather .main-icon {
+  width: 100px;
+}
