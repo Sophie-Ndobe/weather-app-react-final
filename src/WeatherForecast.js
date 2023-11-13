@@ -5,8 +5,6 @@ import axios from "axios";
 export default function WeatherForecast(props) {
   const [forecast, setForecast] = useState({ loaded: false });
 
-  // let date = new Date(1000*forecast[0].time)
-
   function showWeatherForecast(response) {
     setForecast({
       loaded: true,
@@ -27,16 +25,13 @@ export default function WeatherForecast(props) {
         <div className="row">
           <div className="col forecast-details">
             <div className="outline">
-              <div>{forecast.data[0].time}Sun</div>
+              <div>Sun</div>
               <img
                 src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
                 alt="weather icon"
                 className="main-icon"
               />
-              <div>
-                {forecast.data[0].temperature.maximum}{" "}
-                {forecast.data[0].temperature.minimum}{" "}
-              </div>
+              <div>24° 18°</div>
             </div>
           </div>
         </div>
