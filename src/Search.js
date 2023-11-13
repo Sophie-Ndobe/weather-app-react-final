@@ -2,24 +2,26 @@ import React, { useState } from "react";
 import "./Search.css";
 import Weather from "./Weather";
 import axios from "axios";
+import WeatherForecast from "./WeatherForecast";
 
 export default function Search({ defaultCity }) {
   const [city, setCity] = useState(defaultCity);
   const [weather, setWeather] = useState({ ready: false });
 
   function showWeather(response) {
-    console.log(response);
     setWeather({
       ready: true,
       temperature: Math.round(response.data.temperature.current),
       city: response.data.city,
       humidity: response.data.temperature.humidity,
       wind: response.data.wind.speed,
+
       icon: response.data.condition.icon,
       description: response.data.condition.description,
     });
   }
 
+ 
   function weatherApiCall() {
     let apiKey = "2c13e0a2b6fe347b0421bb02eef2o43t";
     let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
@@ -27,10 +29,12 @@ export default function Search({ defaultCity }) {
     axios.get(apiUrl).then(showWeather);
   }
 
+
   function handleSubmit(event) {
     event.preventDefault();
 
     weatherApiCall();
+    forecastApiCall();
   }
 
   function updateCity(event) {
@@ -62,6 +66,7 @@ export default function Search({ defaultCity }) {
           </div>
         </div>
         <Weather data={weather} />
+        <WeatherForecast city={city}/>
       </div>
     );
   } else {
