@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./Search.css";
 import Weather from "./Weather";
 import axios from "axios";
-import WeatherForecast from "./WeatherForecast";
 
 export default function Search({ defaultCity }) {
   const [city, setCity] = useState(defaultCity);
@@ -21,14 +20,12 @@ export default function Search({ defaultCity }) {
     });
   }
 
- 
   function weatherApiCall() {
     let apiKey = "2c13e0a2b6fe347b0421bb02eef2o43t";
     let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
 
     axios.get(apiUrl).then(showWeather);
   }
-
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -66,7 +63,6 @@ export default function Search({ defaultCity }) {
           </div>
         </div>
         <Weather data={weather} />
-        <WeatherForecast city={city}/>
       </div>
     );
   } else {
