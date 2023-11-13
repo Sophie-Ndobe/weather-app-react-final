@@ -21,8 +21,6 @@ export default function WeatherForecast(props) {
     axios.get(forecastApiUrl).then(showWeatherForecast);
   }
 
-  function maxTemperature() {}
-
   if (forecast.loaded) {
     return (
       <div className="WeatherForecast">
